@@ -82,6 +82,7 @@ The generator creates starter files for the three parts of the component:
 - product-alerts.component.html
 - product-alerts.component.css
 
+!!! Remove standalone= true && intut=[] and add to app.module !!!
 
 # integrate new component
 ### src/app/product-alerts/product-alerts.component.ts
@@ -100,7 +101,6 @@ export class ProductAlertsComponent {
 }
 
 ````
-
 ### src/app/product-alerts/product-alerts.component.html
 
 ```ts
@@ -109,8 +109,46 @@ export class ProductAlertsComponent {
 </p>
 
 ````
+# Pass data to a parent component
+
+### src/app/product-alerts/product-alerts.component.ts
+
+```ts
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Product } from '../products';
+
+````
 
 ```ts
 
+export class ProductAlertsComponent {
+  @Input() product: Product | undefined;
+  @Output() notify = new EventEmitter();
+}
 
+````
+### src/app/product-alerts/product-alerts.component.html
+
+```ts
+<p *ngIf="product && product.price > 700">
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+</p>
+
+````
+
+### src/app/product-list/product-list.component.ts
+
+```ts
+export class ProductListComponent {
+
+  products = [...products];
+
+  share() {
+    window.alert('The product has been shared!');
+  }
+
+  onNotify() {
+    window.alert('You will be notified when the product goes on sale');
+  }
+}
 ````

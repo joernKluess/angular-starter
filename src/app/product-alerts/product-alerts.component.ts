@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../products';
 
 @Component({
@@ -7,7 +7,6 @@ import { Product } from '../products';
   styleUrl: './product-alerts.component.css'
 })
 export class ProductAlertsComponent {
-
   @Input() product: Product | undefined;
-
+  @Output() notify = new EventEmitter();
 }
