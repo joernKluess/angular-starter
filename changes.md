@@ -69,9 +69,10 @@ src/app/product-list/product-list.component.html
 
 
 ````
+# generate component
 
-```ts
-
+```
+ng generate component product-alerts
 
 ````
 
