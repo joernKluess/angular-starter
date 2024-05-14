@@ -44,8 +44,28 @@ src/app/product-list/product-list.component.html
 </div>
 
 ````
+# add button
 
 ```ts
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+    <h3>
+        <a [title]="product.name + ' details'">
+            {{ product.name }}
+        </a>
+    </h3>
+
+    <p *ngIf="product.description">
+        Description: {{ product.description }}
+    </p>
+
+    <button type="button" (click)="share()">
+        Share
+    </button>
+
+</div>
 
 
 ````
