@@ -1,6 +1,7 @@
 # Create the product list
 
-src/app/product-list/product-list.component.html
+### src/app/product-list/product-list.component.html
+
 ```ts
 
 <h2>Products</h2>
@@ -75,14 +76,37 @@ src/app/product-list/product-list.component.html
 ng generate component product-alerts
 
 ````
+The generator creates starter files for the three parts of the component:
+
+- product-alerts.component.ts
+- product-alerts.component.html
+- product-alerts.component.css
+
+
+# integrate new component
+### src/app/product-alerts/product-alerts.component.ts
 
 ```ts
-
+import { Component, Input } from '@angular/core';
+import { Product } from '../products';
 
 ````
 
 ```ts
+export class ProductAlertsComponent {
 
+    @Input() product: Product | undefined;
+
+}
+
+````
+
+### src/app/product-alerts/product-alerts.component.html
+
+```ts
+<p *ngIf="product && product.price > 700">
+<button type="button">Notify Me</button>
+</p>
 
 ````
 
